@@ -1,0 +1,21 @@
+.logo_wrapper > h1,
+.logo_wrapper > h1 > span {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 60px;
+  color: #000000;
+  cursor: pointer;
+}
+.logo_wrapper > h1 > span {
+  color: #31c787;
+}
+
+@media (max-width: 430px) {
+  .logo_wrapper > h1,
+  .logo_wrapper > h1 > span {
+    font-size: 22px;
+    line-height: 40px;
+  }
+}
