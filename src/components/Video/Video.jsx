@@ -6,6 +6,7 @@ import "../Video/Video.css";
 
 import Caption from "../Caption/Caption";
 import MobileButtons from "../MobileButtons/MobileButtons";
+import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
 const Video = () => {
   const [showTranscript, setShowTranscript] = useState(false);
@@ -41,9 +42,7 @@ const Video = () => {
                 </div>
               </>
             ) : (
-              <video ref={videoRef} className="video_player" loop controls>
-                <source src="./video/video.mp4" type="video/webm" />
-              </video>
+              <VideoPlayer/>
             )}
 
             <div className="video_buttons">
