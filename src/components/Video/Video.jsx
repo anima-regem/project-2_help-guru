@@ -1,12 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import Logo from "../Logo/Logo";
 import { videoIcon, audioIcon, closeIcon } from "../../assets/icons";
-import Button from "../Button/Button";
 import "../Video/Video.css";
 
 import Caption from "../Caption/Caption";
-import MobileButtons from "../MobileButtons/MobileButtons";
-import VideoPlayer from "../VideoPlayer/VideoPlayer";
+import { useNavigate } from "react-router-dom";
 
 const Video = () => {
   const [showTranscript, setShowTranscript] = useState(false);
@@ -14,6 +12,7 @@ const Video = () => {
   const videoRef = useRef();
   const audioRef = useRef();
 
+  const navigate = useNavigate();
   return (
     <>
       <div className="container">
@@ -37,32 +36,17 @@ const Video = () => {
               <>
                 <div ref={audioRef} className="audio_section">
                   <audio controls>
-                    <source src="./audio/audio.mp3" type="audio/mpeg" />
+                    <source src="http://localhost:8000/video/1/audio" type="audio/mp3" />
                   </audio>
                 </div>
               </>
             ) : (
-              <VideoPlayer/>
+              <video ref={videoRef} id="my-video" controls>
+                <source src="http://localhost:8000/video/1" type="video/mp4" />
+              </video>
             )}
-
-            <div className="video_buttons">
-              <Button
-                name="Play Video"
-                icon={videoIcon}
-                buttonColor="#31c787"
-                textColor="#fff"
-              />
-              <Button
-                name="Play Audio"
-                icon={audioIcon}
-                buttonColor="#fff"
-                textColor="#3A3A3A"
-                onClick={() => navigate("/audio")}
-              />
-            </div>
           </div>
-          {showTranscript && <Caption videoRef={videoRef} />}
-          <MobileButtons showTranscript={showTranscript} />
+          {showTranscript && <Caption targetRef={videoRef} />}
         </div>
       </div>
     </>

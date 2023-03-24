@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Caption.css";
-import transcript from "../../assets/transcript";
 import { animated, useSpring } from "@react-spring/web";
 
-const Caption = ({ videoRef }) => {
+const Caption = ({ targetRef }) => {
   const animateTranscript = useSpring({
     from: { opacity: 0, right: -400 },
     to: { opacity: 1, right: 0 },
@@ -11,16 +10,30 @@ const Caption = ({ videoRef }) => {
       right: -400,
     },
   });
+
+  const [transcript, setTranscript] = useState([]);
+
+  useEffect(() => {
+    const url = (targetRef.current.currentSrc || targetRef.current.firstChild.currentSrc) + "/subtitles";
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        setTranscript(data);
+      });
+  }, []);
+
   const setTime = (time) => {
     var hms = time.split(":");
     const sec =
       parseInt(hms[0]) * 60 * 60 + parseInt(hms[1] * 60) + parseInt(hms[2]);
-    if (!(videoRef.current === null)) {
-      videoRef.current.currentTime = sec;
-      videoRef.current.play();
+    if (!(targetRef.current === null)) {
+      targetRef.current.currentTime = sec;
+      targetRef.current.play();
+
+      targetRef.current.firstChild.currentTime = sec;
+      targetRef.current.firstChild.play();
     }
   };
-
 
   const textRef = useRef(null);
 
@@ -31,7 +44,6 @@ const Caption = ({ videoRef }) => {
     >
       <div className="trancript_heading_section">
         <h3>Transcript</h3>
-        <i class="fa-solid fa-x"></i>
       </div>
       <div ref={textRef} className="trascript_text">
         {transcript.map((p) => (
