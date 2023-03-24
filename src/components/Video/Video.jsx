@@ -38,15 +38,15 @@ const Video = () => {
                 <div ref={audioRef} className="audio_section">
                   <audio controls>
                     <source
-                      src="https://project-2-backend-evdh.vercel.app/video/1/audio"
-                      type="audio/mp3"
+                      src="https://help-guru-backend.vercel.app/video/1/audio"
+                      type="audio/webm"
                     />
                   </audio>
                 </div>
               </>
             ) : (
               <video ref={videoRef} id="my-video" controls>
-                <source src="https://project-2-backend-evdh.vercel.app/video/1" type="video/mp4" />
+                <source src="https://help-guru-backend.vercel.app/video/1" type="video/mp4" />
               </video>
             )}
           </div>
