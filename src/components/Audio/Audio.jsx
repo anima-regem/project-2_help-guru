@@ -27,7 +27,7 @@ const Audio = () => {
         <div className="row">
           <div className={showTranscript ? "col-lg-8 col-md-7" : "col-lg-12"}>
             <div ref={audioRef} className="audio_section">
-              <audio controls src="http://localhost:8000/audio/1"></audio>
+              <audio controls src="https://project-2-backend-evdh.vercel.app/audio/1"></audio>
             </div>
           </div>
           {showTranscript && <Caption targetRef={audioRef} />}

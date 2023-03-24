@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Logo from "../Logo/Logo";
 import { videoIcon, audioIcon, closeIcon } from "../../assets/icons";
 import "../Video/Video.css";
+import server from "../../config";
 
 import Caption from "../Caption/Caption";
 import { useNavigate } from "react-router-dom";
@@ -36,13 +37,16 @@ const Video = () => {
               <>
                 <div ref={audioRef} className="audio_section">
                   <audio controls>
-                    <source src="http://localhost:8000/video/1/audio" type="audio/mp3" />
+                    <source
+                      src="https://project-2-backend-evdh.vercel.app/video/1/audio"
+                      type="audio/mp3"
+                    />
                   </audio>
                 </div>
               </>
             ) : (
               <video ref={videoRef} id="my-video" controls>
-                <source src="http://localhost:8000/video/1" type="video/mp4" />
+                <source src="https://project-2-backend-evdh.vercel.app/video/1" type="video/mp4" />
               </video>
             )}
           </div>
