@@ -27,7 +27,7 @@ const Audio = () => {
         <div className="row">
           <div className={showTranscript ? "col-lg-8 col-md-7" : "col-lg-12"}>
             <div>
-              <h3>Play Audio</h3>
+              <h3>Playing Audio</h3>
               <br />
               <br />
             </div>
@@ -38,7 +38,7 @@ const Audio = () => {
               ></audio>
             </div>
           </div>
-          {showTranscript && <Caption targetRef={audioRef} />}
+          {showTranscript && <Caption targetRef={audioRef} src=''/>}
         </div>
       </div>
     </>

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Caption.css";
 import { animated, useSpring } from "@react-spring/web";
 
-const Caption = ({ targetRef }) => {
+const Caption = ({ targetRef, src }) => {
   const animateTranscript = useSpring({
     from: { opacity: 0, right: -400 },
     to: { opacity: 1, right: 0 },
@@ -14,7 +14,16 @@ const Caption = ({ targetRef }) => {
   const [transcript, setTranscript] = useState([]);
 
   useEffect(() => {
-    const url = (targetRef.current.currentSrc || targetRef.current.firstChild.currentSrc) + "/subtitles";
+    var url = ''
+    console.log(src)
+    console.log(src=="")
+    if (src == "") {
+      url =
+        (targetRef.current.currentSrc ||
+          targetRef.current.firstChild.currentSrc) + "/subtitles";
+    } else {
+      url = src + "/subtitles";
+    }
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

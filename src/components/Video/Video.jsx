@@ -33,10 +33,11 @@ const Video = () => {
         </div>
         <div className="row">
           <div className={showTranscript ? "col-lg-8 col-md-7" : "col-lg-12"}>
+            <h3>Playing {showAudio ? "Audio Only" : "Video"}</h3>
             {showAudio ? (
               <>
                 <div ref={audioRef} className="audio_section">
-                  <audio controls>
+                  <audio aria-label="Audio Player" controls>
                     <source
                       src="https://help-guru-backend.vercel.app/video/1/audio"
                       type="audio/webm"
@@ -45,12 +46,12 @@ const Video = () => {
                 </div>
               </>
             ) : (
-              <video ref={videoRef} id="my-video" controls>
+              <video aria-label="Video Player" ref={videoRef} id="my-video" controls className="video_player">
                 <source src="https://help-guru-backend.vercel.app/video/1" type="video/mp4" />
               </video>
             )}
           </div>
-          {showTranscript && <Caption targetRef={videoRef} />}
+          {showTranscript && <Caption targetRef={videoRef} src="https://help-guru-backend.vercel.app/video/1"/>}
         </div>
       </div>
     </>
