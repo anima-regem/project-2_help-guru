@@ -34,6 +34,8 @@ const Video = () => {
         <div className="row">
           <div className={showTranscript ? "col-lg-8 col-md-7" : "col-lg-12"}>
             <h3>Playing {showAudio ? "Audio Only" : "Video"}</h3>
+            <br />
+            <br />
             {showAudio ? (
               <>
                 <div ref={audioRef} className="audio_section">
